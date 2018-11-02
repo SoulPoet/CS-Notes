@@ -536,13 +536,13 @@ cp [-adfilprsu] source destination
 
 <div align="center"> <img src="../pics//b8081c84-62c4-4019-b3ee-4bd0e443d647.jpg"/> </div><br>
 
-### 1. 实体链接
+### 1. 实体链接(硬链接？)
 
 在目录下创建一个条目，记录着文件名与 inode 编号，这个 inode 就是源文件的 inode。
 
 删除任意一个条目，文件还是存在，只要引用数量不为 0。
 
-有以下限制：不能跨越文件系统、不能对目录进行链接。
+有以下限制：不能跨越文件系统、不能对目录进行链接(这句话有待考究。在linux下，目录也是文件的一种，且"."、".."这些应该都可以看成是目录的链接)。
 
 ```html
 # ln /etc/crontab .
@@ -551,7 +551,7 @@ cp [-adfilprsu] source destination
 34474855 -rw-r--r--. 2 root root 451 Jun 10 2014 /etc/crontab
 ```
 
-### 2. 符号链接
+### 2. 符号链接(软链接？)
 
 符号链接文件保存着源文件所在的绝对路径，在读取时会定位到源文件上，可以理解为 Windows 的快捷方式。
 
